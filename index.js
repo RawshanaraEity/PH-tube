@@ -29,20 +29,26 @@ const handleLoadNews = async (categoryId) =>{
         const div = document.createElement('div')
         div.innerHTML = `
         <div class="card w-full bg-base-100 shadow-xl">
-            <figure><img src="${element.thumbnail}" alt="thumbnail" class="h-48 w-full"/></figure>
-            <div class="card-body">
+            <figure><img src="${element.thumbnail}" alt="thumbnail" class="h-48 w-full "/></figure>
+            <div class="card-body h-40">
                 <div class="flex">
-                    <div class="avatar online">
-                        <div class="w-14 rounded-full">
-                            <img src=""/>
+                    <div class="avatar">
+                        <div class="w-14 h-14 rounded-full mr-3">
+                            <img src="${element.authors[0].profile_picture}"/>
                         </div>
                     </div>
-                    <h2 class="card-title">yufkjhgjhgh</h2>
-                </div>
-                <div class="card-actions justify-end">
-                    <p>If a dog chews shoes </p>
-                    <p>hg</p>
+                    <div>
+                    <h2 class="card-title">${element.title}</h2>
+                    <div class="flex">
+                    <p>${element.authors[0].profile_name}</p>
+                    <p>${element.authors[0].verified? `<img src="image/png.png"/>` : ""} </p>
+                    </div>
+                    <div class="">
+                    <p>hgkkl</p>
                   </div>
+                    </div>
+                </div>
+                
           </div>
        </div>
         `;
@@ -56,3 +62,4 @@ const handleLoadNews = async (categoryId) =>{
 
 
 handleCategory()
+handleLoadNews("1000")
