@@ -10,9 +10,8 @@ const handleCategory = async () =>{
         <button onclick="handleLoadNews('${category.category_id}')" class="btn btn-active btn-ghost">${category.category}</button>
         `;
         categoryContainer.appendChild(div)
-        console.log()
     });
-    console.log(data.data)
+    // console.log(data.data)
    
     
     
@@ -27,10 +26,15 @@ const handleLoadNews = async (categoryId) =>{
     
     data.data.forEach(element =>{
         const div = document.createElement('div')
+        const seconds = element.others.posted_date;
+        const hours = Math.floor(seconds / 3600);
+        const min = Math.floor((seconds % 3600) / 60)
+        console.log(hours,min)
         div.innerHTML = `
         <div class="card w-full bg-base-100 shadow-xl">
-            <figure><img src="${element.thumbnail}" alt="thumbnail" class="h-48 w-full "/></figure>
-            <div class="card-body h-40">
+            <figure><img src="${element.thumbnail}" alt="thumbnail" class="h-48 w-full relative"/></figure>
+            <div class="bg-slate-900 rounded-lg text-white absolute bottom-1/2 left-40 px-2">${element.others?.posted_date? `${hours}hrs ${min} min ago` : ''}</div>
+            <div class="card-body h-44">
                 <div class="flex">
                     <div class="avatar">
                         <div class="w-14 h-14 rounded-full mr-3">
@@ -39,12 +43,12 @@ const handleLoadNews = async (categoryId) =>{
                     </div>
                     <div>
                     <h2 class="card-title">${element.title}</h2>
-                    <div class="flex">
+                    <div class="flex my-1">
                     <p>${element.authors[0].profile_name}</p>
                     <p>${element.authors[0].verified? `<img src="image/png.png"/>` : ""} </p>
                     </div>
                     <div class="">
-                    <p>hgkkl</p>
+                    <p>${element.others.views}</p>
                   </div>
                     </div>
                 </div>
@@ -53,9 +57,9 @@ const handleLoadNews = async (categoryId) =>{
        </div>
         `;
         cardContainer.appendChild(div)
-        console.log(element)
+        // console.log(element)
     })
-    console.log(data.data)
+    // console.log(data.data)
     
     
 }
