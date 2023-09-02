@@ -1,3 +1,4 @@
+
 const handleCategory = async () => {
   const response = await fetch(
     "https://openapi.programming-hero.com/api/videos/categories"
@@ -10,8 +11,6 @@ const handleCategory = async () => {
 
   categories.forEach((category) => {
   
-    const id = category.category.category_id
-    console.log(id)
     const div = document.createElement("div");
     div.innerHTML = `
         <button onclick="handleLoadNews('${category.category_id}')" id="all-data" class="btn btn-active btn-ghost ">${category.category}</button>
@@ -25,18 +24,19 @@ const handleCategory = async () => {
 };
 
 
-
 const handleLoadNews = async (categoryId) => {
   const response = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
   );
   const data = await response.json();
-
+ 
+ 
   
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
 
   data.data.forEach((element) => {
+    
     const div = document.createElement("div");
     const seconds = element.others.posted_date;
     const hours = Math.floor(seconds / 3600);
