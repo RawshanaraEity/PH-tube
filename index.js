@@ -6,15 +6,25 @@ const handleCategory = async () => {
 
   const categoryContainer = document.getElementById("category-container");
   const categories = data.data;
+  
 
   categories.forEach((category) => {
+  
+    const id = category.category.category_id
+    console.log(id)
     const div = document.createElement("div");
     div.innerHTML = `
-        <button onclick="handleLoadNews('${category.category_id}')" class="btn btn-active btn-ghost">${category.category}</button>
+        <button onclick="handleLoadNews('${category.category_id}')" id="all-data" class="btn btn-active btn-ghost ">${category.category}</button>
         `;
     categoryContainer.appendChild(div);
+    
+    
   });
+
+
 };
+
+
 
 const handleLoadNews = async (categoryId) => {
   const response = await fetch(
@@ -22,6 +32,7 @@ const handleLoadNews = async (categoryId) => {
   );
   const data = await response.json();
 
+  
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
 
@@ -67,7 +78,6 @@ const handleLoadNews = async (categoryId) => {
         `;
 
     cardContainer.appendChild(div);
-    // console.log(element)
   });
   const missingData = document.getElementById("missing-data");
   if (data.data.length === 0) {
@@ -75,18 +85,19 @@ const handleLoadNews = async (categoryId) => {
   } else {
     missingData.classList.add("hidden");
   }
-
-  //   console.log(data.data)
 };
+
 
 // data sort function
 
-const handleShort = async (categoryId) => {
+const handleShort = async (categoryData) => {
+  
   const response = await fetch(
-    `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
+    `https://openapi.programming-hero.com/api/videos/category/${categoryData}`
   );
   const data = await response.json();
-
+ 
+  
   data.data.sort((data1, data2) => {
     data1 = parseFloat(data1.others.views);
     data2 = parseFloat(data2.others.views);
@@ -98,7 +109,7 @@ const handleShort = async (categoryId) => {
     }
     return 0;
   });
-  console.log(data);
+
 
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
@@ -154,7 +165,10 @@ const handleShort = async (categoryId) => {
   } else {
     missingData.classList.add("hidden");
   }
+
+  
 };
 
-handleCategory();
+handleCategory()
 handleLoadNews("1000");
+

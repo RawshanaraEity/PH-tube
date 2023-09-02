@@ -12,7 +12,7 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="container mx-auto">
+  <body class="container mx-auto mb-8">
     <nav>
         <div class="navbar bg-base-100 py-8">
             <div class="navbar-start">
@@ -22,7 +22,7 @@
                 <button onclick="handleShort('1000')" id="sort-item" class="btn btn-active btn-ghost">Short by view</button>
             </div>
             <div class="navbar-end">
-              <a href="blog.html" class="btn bg-red-600 text-white">Blog</a>
+              <a href="blog.html" target="_blank" class="btn bg-red-600 text-white">Blog</a>
             </div>
           </div>
           <hr>
@@ -35,26 +35,6 @@
 
        <div id="card-container" class="card-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-6 lg:px-0">
 
-        <!-- <div class="card w-full bg-base-100 shadow-xl">
-            <figure><img src="${element.thumbnail}" alt="thumbnail" class="h-48 w-full "/></figure>
-            <div class="">
-                <div class="flex">
-                    <div class="avatar">
-                        <div class="w-14 rounded-full mr-3">
-                            <img src="${element.authors[0].profile_picture}"/>
-                        </div>
-                    </div>
-                    <div class="authpor">
-                    <h2 class="card-title">${element.title}</h2>
-                    <p>${element.authors[0].profile_name}</p>
-                    <p>hg</p>
-                    <div class="jkj">
-                    <p>hg</p>
-                  </div>
-                    </div>
-                </div>  
-          </div>
-       </div> -->
 
     </div>
 
@@ -67,7 +47,7 @@
 
 
 
-<!-- script here -->
+<!-- script file here -->
     <script src="index.js"></script>
   </body>
 </html>
