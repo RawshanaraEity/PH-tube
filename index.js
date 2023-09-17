@@ -1,4 +1,6 @@
 
+let globData
+
 const handleCategory = async () => {
   const response = await fetch(
     "https://openapi.programming-hero.com/api/videos/categories"
@@ -11,13 +13,22 @@ const handleCategory = async () => {
 
   categories.forEach((category) => {
   
+
     const div = document.createElement("div");
     div.innerHTML = `
-        <button onclick="handleLoadNews('${category.category_id}')" id="all-data" class="btn btn-active btn-ghost ">${category.category}</button>
+        <button onclick="handleLoadNews('${category.category_id}')" id="all-data" class="btn btn-active btn-ghost focus:bg-red-600 focus:text-white ">${category.category}</button>
         `;
+       
     categoryContainer.appendChild(div);
-    
-    
+
+
+     div.addEventListener('click',function(){
+      
+      const data2 = category.category_id
+      globData = data2 
+     
+    })
+   
   });
 
 
